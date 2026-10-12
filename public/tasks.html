@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docket | My tasks</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand">Docket</span>
+    <div class="topbar-user">
+      <span id="user-name"></span>
+      <button type="button" class="btn btn-small" id="logout-btn">Log out</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats" aria-label="Task summary">
+      <div class="stat"><span class="stat-num" id="stat-total">0</span><span class="stat-label">Total</span></div>
+      <div class="stat"><span class="stat-num" id="stat-todo">0</span><span class="stat-label">To do</span></div>
+      <div class="stat"><span class="stat-num" id="stat-in_progress">0</span><span class="stat-label">In progress</span></div>
+      <div class="stat"><span class="stat-num" id="stat-done">0</span><span class="stat-label">Done</span></div>
+      <div class="stat stat-alert"><span class="stat-num" id="stat-overdue">0</span><span class="stat-label">Overdue</span></div>
+    </section>
+
+    <section class="toolbar" aria-label="Filter tasks">
+      <div class="toolbar-search">
+        <label class="sr-only" for="filter-search">Search tasks</label>
+        <input type="search" id="filter-search" placeholder="Search title or description" maxlength="100">
+      </div>
+      <div>
+        <label class="sr-only" for="filter-status">Status</label>
+        <select id="filter-status">
+          <option value="">All statuses</option>
+          <option value="todo">To do</option>
+          <option value="in_progress">In progress</option>
+          <option value="done">Done</option>
+        </select>
+      </div>
+      <div>
+        <label class="sr-only" for="filter-priority">Priority</label>
+        <select id="filter-priority">
+          <option value="">All priorities</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+      <div>
+        <label class="sr-only" for="filter-due">Due date</label>
+        <select id="filter-due">
+          <option value="">Any due date</option>
+          <option value="overdue">Overdue</option>
+          <option value="today">Due today</option>
+          <option value="week">Due in 7 days</option>
+          <option value="none">No due date</option>
+        </select>
+      </div>
+      <div>
+        <label class="sr-only" for="filter-sort">Sort by</label>
+        <select id="filter-sort">
+          <option value="created_desc">Newest first</option>
+          <option value="due_asc">Due date, soonest</option>
+          <option value="priority_desc">Priority, high first</option>
+          <option value="title_asc">Title, A to Z</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-small" id="clear-filters">Clear filters</button>
+      <button type="button" class="btn btn-primary" id="new-task-btn">New task</button>
+    </section>
+
+    <ul class="task-list" id="task-list" aria-live="polite"></ul>
+    <p class="empty" id="empty-state" hidden></p>
+  </main>
+
+  <dialog id="task-dialog" aria-labelledby="dialog-title">
+    <form id="task-form" novalidate>
+      <h2 id="dialog-title">New task</h2>
+
+      <div class="field">
+        <label for="task-title">Title</label>
+        <input type="text" id="task-title" name="title" maxlength="120">
+        <p class="error" data-error-for="title"></p>
+      </div>
+
+      <div class="field">
+        <label for="task-description">Description <span class="optional">(optional)</span></label>
+        <textarea id="task-description" name="description" rows="3" maxlength="2000"></textarea>
+        <p class="error" data-error-for="description"></p>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="task-due">Due date <span class="optional">(optional)</span></label>
+          <input type="date" id="task-due" name="due_date">
+          <p class="error" data-error-for="due_date"></p>
+        </div>
+        <div class="field">
+          <label for="task-priority">Priority</label>
+          <select id="task-priority" name="priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="task-status">Status</label>
+          <select id="task-status" name="status">
+            <option value="todo">To do</option>
+            <option value="in_progress">In progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="error form-error" data-form-error role="alert"></p>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="cancel-btn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="save-btn">Save task</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/tasks.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docket | Log in</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <main class="auth-wrap">
+    <section class="auth-intro">
+      <h1>Docket</h1>
+      <p>Keep track of what needs doing and when it's due.</p>
+    </section>
+
+    <section class="auth-card">
+      <div class="tabs" role="tablist" aria-label="Account">
+        <button type="button" role="tab" id="tab-login" aria-selected="true" aria-controls="login-form">Log in</button>
+        <button type="button" role="tab" id="tab-register" aria-selected="false" aria-controls="register-form">Create account</button>
+      </div>
+
+      <p id="notice" class="notice" role="status" hidden></p>
+
+      <form id="login-form" role="tabpanel" aria-labelledby="tab-login" novalidate>
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" autocomplete="email">
+          <p class="error" data-error-for="email"></p>
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" autocomplete="current-password">
+          <p class="error" data-error-for="password"></p>
+        </div>
+        <p class="error form-error" data-form-error role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+
+      <form id="register-form" role="tabpanel" aria-labelledby="tab-register" novalidate hidden>
+        <div class="field">
+          <label for="register-name">Name</label>
+          <input type="text" id="register-name" name="name" autocomplete="name" maxlength="80">
+          <p class="error" data-error-for="name"></p>
+        </div>
+        <div class="field">
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" name="email" autocomplete="email">
+          <p class="error" data-error-for="email"></p>
+        </div>
+        <div class="field">
+          <label for="register-password">Password</label>
+          <input type="password" id="register-password" name="password" autocomplete="new-password">
+          <p class="hint">At least 8 characters, with a letter and a number.</p>
+          <p class="error" data-error-for="password"></p>
+        </div>
+        <p class="error form-error" data-form-error role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
