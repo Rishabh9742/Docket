@@ -205,3 +205,10 @@ curl -i http://localhost:3000/api/tasks
 - Task categories or projects
 - Pagination for very large task lists (the list currently returns up to 500 tasks)
 - Automated tests with Jest and Supertest
+
+<img width="1887" height="761" alt="image" src="https://github.com/user-attachments/assets/ab6db575-ccd9-4b3c-a687-4bedf12827d9" />
+<img width="1252" height="745" alt="image" src="https://github.com/user-attachments/assets/c6717069-0151-4bb2-938d-b45224ce8447" />
+<img width="1892" height="747" alt="image" src="https://github.com/user-attachments/assets/a3b3ae28-9c38-45bb-9c60-4dd3a60fcd8f" />
+
+
+
